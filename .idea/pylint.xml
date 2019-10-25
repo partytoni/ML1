@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PylintConfigService">
+    <option name="customPylintPath" value="$PROJECT_DIR$/venv/lib64/python3.7/site-packages/pylint/__init__.py" />
+  </component>
+</project>
