@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.naive_bayes import GaussianNB
 
 NUM = 30000
 
@@ -18,12 +19,11 @@ y2 = first_n['compiler']
 y = pd.concat([y1, y2], axis=1)
 X_train, X_test, y_train, y_test = train_test_split(X, y2, test_size=0.20)
 
-clf = RandomForestClassifier(n_estimators=1000,n_jobs=-1)
-
+clf = GaussianNB()
 print("Fitting")
 clf.fit(X_train, y_train)
 print("Predicting")
 y_pred = clf.predict(X_test)
-print(y_pred)
 print(classification_report(y_test, y_pred))
 print("")
+
