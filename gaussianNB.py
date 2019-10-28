@@ -9,7 +9,7 @@ SEED = 123
 
 
 def main():
-    dataframe = pd.read_pickle('matrix_zero_ones.pkl')
+    dataframe = pd.read_pickle('data/matrix_zero_ones.pkl')
     x = dataframe.drop('opt', axis=1)
     x = x.drop('compiler', axis=1)
 
