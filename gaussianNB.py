@@ -23,12 +23,12 @@ def main():
 
 
 def prediction(x, y):
-    X_train, X_test, y_train, y_test = train_test_split(x, y, random_state=SEED, test_size=0.20)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=SEED, test_size=0.20)
     clf = GaussianNB()
     print('Gaussian Fitting with params=', clf.get_params())
-    clf.fit(X_train, y_train)
+    clf.fit(x_train, y_train)
     print("Predicting")
-    y_pred = clf.predict(X_test)
+    y_pred = clf.predict(x_test)
     return classification_report(y_test, y_pred)
 
 
