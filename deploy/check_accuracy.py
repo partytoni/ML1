@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 
 FILEPATH1 = "results.csv"
-FILEPATH2 = "out.csv"
+FILEPATH2 = "lorix.csv"
 
 uno = []
 due = []

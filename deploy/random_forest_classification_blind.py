@@ -33,7 +33,9 @@ def write_results_to_csv(opt_pred,compiler_pred):
     print(collections.Counter(compiler_pred))
     import os
     
-    with open(os.path.abspath(__file__)+'random_forest_results.csv','w') as file:
+    path=os.path.dirname(__file__)
+
+    with open(path+'/random_forest_results.csv','w') as file:
         for i in range(len(opt_pred)):
             line = opt_pred[i]+","+compiler_pred[i]+"\n"
             file.write(line)
@@ -60,7 +62,7 @@ def read_json(path):
 def predict(x, y):
     x_train = x[:30000]
     x_test = x[-3000:]
-    clf = RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=123)
+    clf = RandomForestClassifier(n_estimators=50, n_jobs=-1, random_state=123)
     print('Doing RandomForest fitting.')
     clf.fit(x_train, y)
     print("Predicting")
@@ -68,4 +70,3 @@ def predict(x, y):
     return y_pred
 
 main()
-
