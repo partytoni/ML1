@@ -1,11 +1,20 @@
 import jsonlines
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import KFold
+from sklearn.svm import LinearSVC
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
+import numpy as np
 
-TRAIN_PATH = 'data/train_dataset.jsonl'
-TEST_PATH = 'data/test_dataset_blind.jsonl'
+TRAIN_PATH = '../data/train_dataset.jsonl'
+TEST_PATH = '../data/test_dataset_blind.jsonl'
+
+
+def kfold(x, y):
+    random_clf = LinearSVC()
+    return cross_val_score(random_clf, x, y, n_jobs=-1, cv=3)
 
 
 def main():
@@ -24,9 +33,12 @@ def main():
 
     count_vec = CountVectorizer(ngram_range=(2, 2))
     x = count_vec.fit_transform(corpus)
-    print("Accuracy for opt:", predict(x, opt))
-    print("Accuracy for compiler:", predict(x, compiler))
-
+    # print("Accuracy for opt:", predict(x, opt))
+    # print("Accuracy for compiler:", predict(x, compiler))
+    kf = kfold(x, opt)
+    print("KFOLD:", kf)
+    print("KFOLD mean:", kf.mean())
+    print("KFOLD var:", np.var(kf))
 
 def predict(x, y):
     x_train, x_test, y_train, y_test = train_test_split(x, y,
@@ -37,6 +49,5 @@ def predict(x, y):
     print("Predicting")
     y_pred = clf.predict(x_test)
     return accuracy_score(y_test, y_pred)
-
 
 main()
