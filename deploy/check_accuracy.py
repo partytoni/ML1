@@ -19,8 +19,8 @@ with open(FILEPATH1,'r') as file1:
             if line1 != line2:
                 print(line1, "diverso da", line2)
                 error+=1
-print(accuracy_score(uno,due))
-print(error)
+print("accuracy:",accuracy_score(uno,due))
+print("num of errors:",error)
 
 
 
