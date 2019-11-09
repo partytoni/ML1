@@ -1,11 +1,6 @@
 import jsonlines
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
-import numpy as np
 import collections
 
 TRAIN_PATH = 'train_dataset.jsonl'
@@ -32,9 +27,7 @@ def write_results_to_csv(opt_pred,compiler_pred):
     print(collections.Counter(compiler_pred))
     import os
     
-    path=os.path.dirname(__file__)
-
-    with open('/home/antonio/svm_results.csv','w') as file:
+    with open('1611005.csv','w') as file:
         for i in range(len(opt_pred)):
             line = opt_pred[i]+","+compiler_pred[i]+"\n"
             file.write(line)
@@ -60,7 +53,7 @@ def read_json(path):
 def predict(x, y):
     x_train = x[:30000]
     x_test = x[-3000:]
-    clf = LinearSVC(random_state=123)
+    clf = LinearSVC()
     print('Doing LinearSVC fitting.')
     clf.fit(x_train, y)
     print("Predicting")

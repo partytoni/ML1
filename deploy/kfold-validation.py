@@ -26,11 +26,11 @@ def kfold(x, y, name, classifier):
 
 def main():
     corpus, opt, compiler = read_file()
-    count_vec = TfidfVectorizer(ngram_range=(2, 2))
+    count_vec = TfidfVectorizer(ngram_range=(2, 3))
     print('Doing fit transform.')
     x = count_vec.fit_transform(corpus)
     clf1 = MultinomialNB()
-    clf2 = RandomForestClassifier(n_jobs=-1, n_estimators=50)
+    clf2 = RandomForestClassifier(n_estimators=30, n_jobs = -1)
     clf3 = LinearSVC()
     clf = [('multinomial', clf1),
            ('random forest', clf2),

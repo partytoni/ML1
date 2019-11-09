@@ -1,24 +1,13 @@
 import jsonlines
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import KFold
-from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-import numpy as np
 
 TRAIN_PATH = 'train_dataset.jsonl'
-TEST_PATH = 'test_dataset_blind.jsonl'
-
-
-def kfold(x, y):
-    random_clf = RandomForestClassifier(n_jobs=1,n_estimators=50)
-    return cross_val_score(random_clf, x, y, n_jobs=-1, cv=3, verbose=1)
-
 
 def main():
+    print("Reading file.")
     corpus = []
     opt = []
     compiler = []
@@ -26,22 +15,16 @@ def main():
         for elem in reader:
             riga = ""
             for instruction in elem['instructions']:
-                first = instruction
-                riga += first + " "
+                riga += instruction + " "
             corpus.append(riga)
             opt.append(elem['opt'])
             compiler.append(elem['compiler'])
 
-    count_vec = TfidfVectorizer(ngram_range=(2, 2))
+    count_vec = TfidfVectorizer(ngram_range=(2, 3))
+    print("Doing fit transform.")
     x = count_vec.fit_transform(corpus)
-    # print("Accuracy for opt:", predict(x, opt))
-    # print("Accuracy for compiler:", predict(x, compiler))
-    kf = kfold(x, opt)
-    print("KFOLD opt:", kf)
-    print("KFOLD opt mean:", kf.mean())
-    kf = kfold(x, compiler)
-    print("KFOLD compiler:", kf)
-    print("KFOLD compiler mean:", kf.mean())
+    print("Accuracy for opt:", predict(x, opt))
+    print("Accuracy for compiler:", predict(x, compiler))
 
 def predict(x, y):
     x_train, x_test, y_train, y_test = train_test_split(x, y,
