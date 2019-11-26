@@ -1,0 +1,28 @@
+
+Data sets are available in
+https://drive.google.com/drive/folders/1UzH28Q8xki8_DMYdDgHxi40-CJ800Kaq
+
+Read the README file in this folder for further instructions about data.
+
+Project development
+
+1) Solve the image classification problem in two modes: A) define a CNN and train it from scratch, B) apply transfer learning and fine tuning from a pre-trained model.
+For training you can use any subset of the MWI dataset.
+2) Evaluate the two models in a proper way. Discuss the best model and motivate the choice. Testing can be done either with cross-validation on MWI or with the SMART-I weather test set.
+3) Write a report (about 10 pages) explaining all the work done: design and implementation choices, evaluation procedure and results. Reports must be individual.
+4) Submit a set of images to be used to define a new test set
+5) Submit your best model (layout and weights)
+
+IMPORTANT: when submitting new images for the new test set take care of copyright and privacy. Submit only images taken by yourself (not downloaded from web) and without faces or other personal information of any kind. By submitting these images, you also give permission to be used for non-commercial research and educational purposes and possibly to be added in the MWI dataset.
+
+Submission procedure
+
+Submit through classroom (e-mail submissions will not be accepted) the following files:
+1) PDF file of the report (no other formats accepted),
+2) ZIP file with the code (without data set),
+3) ZIP file with new images subdivided in folders named exactly: HAZE, RAINY, SNOWY, SUNNY. 10 to 20 images possibly balanced, but it is not necessary to fill all the classes.
+4) File containing the best model to be evaluated with the test set (more details on this final step will be given later).
+
+Deadline: 15/12/2019 11:59 PM CET
+
+NOTE: for exam bonus, only the PDF report (and possibly the code) will be considered. Contribution to the new test set and evaluation of best models (still mandatory) will be performed only for educational purposes.
