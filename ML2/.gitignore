@@ -2,3 +2,4 @@ venv/
 MWI-Dataset*/
 .vscode/
 *.lnk
+*.h5
