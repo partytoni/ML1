@@ -3,3 +3,6 @@ MWI-Dataset*/
 .vscode/
 *.lnk
 *.h5
+Weather_Dataset
+aug-set
+WeatherBlindTestSet
